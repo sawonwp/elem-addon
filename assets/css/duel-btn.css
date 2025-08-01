@@ -1,0 +1,32 @@
+.duel_button {
+    display: flex;    
+    cursor: pointer;
+}
+
+/* .duel_button.outlined>div button.duel_primary {
+    background-color: transparent !important;
+    border: 2px solid #6EC1E4;
+}
+
+.duel_button.outlined>div button.duel_secondary {
+    background-color: transparent !important;
+    border: 2px solid #61CE70;
+}
+
+.duel_button.solid_outlined>div button.duel_primary {
+    background-color: #6EC1E4 !important;    
+}
+
+.duel_button.solid_outlined>div button.duel_secondary {    
+    border: 2px solid #61CE70; 
+    background-color: transparent !important; 
+}
+
+.duel_button.outlined_solid>div button.duel_primary {
+    background-color: transparent !important;
+    border: 2px solid #6EC1E4;
+}
+
+.duel_button.outlined_solid>div button.duel_secondary {
+    background-color:  #6EC1E4!important;    
+} */

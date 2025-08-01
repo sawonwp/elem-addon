@@ -1,0 +1,28 @@
+ul.scroll_wrapper {
+    list-style: none;
+    display: flex;    
+    animation-name: scroll;
+ /* animation-duration: ; inherit from widget*/
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;  
+    
+
+}
+
+li.repeater {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    white-space: nowrap;
+   
+}
+
+ @keyframes scroll {
+from {
+transform: translateX(0);
+}
+to {
+transform: translateX(calc(-100% - 2rem));
+}
+} 
+

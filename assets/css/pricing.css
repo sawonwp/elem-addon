@@ -1,0 +1,220 @@
+.badge_wrapper{
+    width: 100%; 
+}
+.badge_wrapper .badge_inner {
+    text-align: center;
+    padding: 5px 15px;
+} 
+
+ .pricing_box_wrapper {
+     position: relative; 
+} 
+
+.bottom_wrapper{
+    /* display: flex; */
+    justify-content: space-between;
+    flex-direction: column;
+}
+.list_wrapper{
+    list-style-type: none;
+    
+}
+/* .elementor-widget-container:has(.pricing_box_wrapper) {
+    overflow: hidden!important;
+} */
+ .alignment-center2 .pricing_box_wrapper{
+    text-align: center;
+    margin: 0 auto;
+}
+
+ .alignment-center2 .pricing_box_wrapper .pack_btn a{
+   display: block;
+ }
+
+
+ul.list_wrapper svg {
+    width: 15px;
+    display: inline-block;
+}
+
+.pricing_box_wrapper {
+    display: grid;    
+}
+
+
+/* style 1 */
+.element-style-triangle.table-style1 .package_name::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 30px;
+    bottom: -29px;
+    left: 50%;
+    transform: translateX(-50%);
+    clip-path: polygon(51% 42%, 29% 0, 75% 0);
+}
+
+.element-style-bar.table-style1 .package_name::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    top: 99%;
+    left: 50%;
+    transform: translateX(-50%);
+    clip-path: polygon(181% 182%, 0 0, 100% 0);
+}
+
+.element-style-circle.table-style1 .package_name::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    top: 14%;
+    left: 0%;
+    clip-path: circle(60% at 50% 0);
+    z-index: -1;
+}
+
+
+.element-style-ltriangle.table-style1 .package_name::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    top: 99%;
+    left: 0%;
+    clip-path: polygon(0% 0%, 100% 0, 50% 25%);
+}
+
+
+
+.table-style1 .package_name {
+    position: relative;
+}
+
+
+.table-style2 .pack_icon {    
+    grid-row: 1 / span 1;
+}
+
+
+/* table styling 2 css */
+.pricing_box_wrapper .pricing_content_wrap{
+    display: grid;    
+}
+
+.table-style2 .pack_icon {    
+    grid-row: 1/span 1;
+}
+
+.table-style3 .pac_price_str { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;   
+}  
+
+
+.table-style3.price-position-yes .pac_price_str {    
+    grid-row: 1/span 1;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    transform: translateY(-100px);   
+} 
+
+.table-style3 .pac_price_str{
+    margin:0 auto;
+}
+
+.alignment-center .pac_price_str {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.align-diagonal-stripe .pricing_box_wrapper {
+    overflow: hidden;
+}
+
+.align-diagonal-stripe .badge_wrapper{
+    position: relative;
+}
+
+.align-diagonal-stripe .badge_inner{
+    width: 160px;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 20px; 
+    right: -40px;
+}
+
+.elementor-7 .align-horizontal .pricing_box_wrapper{
+    position: relative;
+}
+
+.elementor-7 .align-horizontal .badge_wrapper{
+    position: absolute;
+}
+
+.elementor-7 .align-horizontal .badge_wrapper .badge_inner {
+    transform: rotate(90deg);
+    transform-origin: top left;
+    margin-left: 26px;
+}
+.elementor-7 .align-horizontal .badge_wrapper  .badge_inner p {
+    transform: rotate(180deg);
+}
+.elementor-widget-container .currency_sign {
+    display: inline-block !important;
+    will-change: transform;
+}
+
+.elementor-editor-active .currency_sign,
+.elementor-editor-preview .currency_sign {
+    transform: scale(var(--scale, 1)) !important;
+}
+
+
+
+
+.table-style5 .pack_icon {     
+    margin: 0 auto;
+}
+
+
+.table-style4 .pac_price_str {
+     grid-row: 5/span 1;
+}
+
+
+.table-style5 .pricing_box_wrapper {
+    text-align: center;
+}
+
+.table-style5 .pack_icon {  
+    margin: 0 auto;
+}
+
+.table-style6 .btm_txt {
+    grid-row: 2 / span 1;
+}
+
+/*  */
+.table-style7 .package_name {
+    position: relative;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);   
+    width: 85%;
+}
+
+
+
+

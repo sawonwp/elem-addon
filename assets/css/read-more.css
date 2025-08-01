@@ -1,0 +1,11 @@
+.vis_text::after{
+    content: '.....';
+}
+
+.vis_text.expanded::after{
+    content: '';
+}
+
+.hid_text{
+    display: none;
+}
