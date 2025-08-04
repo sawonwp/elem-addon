@@ -1,0 +1,15 @@
+.style-type-outline h3, 
+.custom_txt_wrapper.style-type-image_mask h3{
+    color: transparent!important;
+} 
+
+.custom_txt_wrapper.style-type-image_mask h3{
+      -webkit-background-clip: text!important;
+      background-clip: text!important;
+      background-size: cover;
+}
+
+/* .style-type-outline h3:hover{
+    -webkit-text-stroke: 0px transparent!important;
+    color: red!important;
+} */

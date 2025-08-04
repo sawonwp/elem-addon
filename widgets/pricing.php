@@ -15,6 +15,9 @@ class  pricing extends Elementor\Widget_Base {
         return ['first-category'];
     }
 
+    public function get_style_depends(): array{
+        return ['pricing-css'];
+    }
 
     protected function register_controls():void {
        
@@ -520,16 +523,19 @@ class  pricing extends Elementor\Widget_Base {
             ]
         );
 
-        $this->add_responsive_control(
+        $this->add_control(
             'pricing-top', 
             [
-                'label' => esc_html__('Enable Pricing on top', 'elem_addon'),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('YES', 'elem_addon'),
-                'label_off' =>  esc_html__('NO', 'elem_addon'),
-                'return_value' => 'yes',
-                'default' => 'no',
-                'prefix_class' => 'price-position-' ,
+                'label' => esc_html__('Enable Pricing Position', 'elem_addon'),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'top' => [ 'icon' => 'eicon-arrow-up'],
+                    'top_nolap' => ['icon' => 'eicon-arrow-down'],
+                    'normal' => ['icon' => 'eicon-parallax'],
+                    'overlap' => ['icon' => 'eicon-v-align-top'],
+                ],
+                'default' => 'normal',
+                'prefix_class' => 'price-position-',
                 'condition' => [
                     'pricing_type_style' => 'style3',
                 ],                 
@@ -604,6 +610,9 @@ class  pricing extends Elementor\Widget_Base {
                 'unit' => 'px',
                 'size' => 30,
             ],
+            'condition' => [
+                'pricing_type_style!' => 'style3',
+            ]
 
         ]  
        );

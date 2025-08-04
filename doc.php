@@ -20,7 +20,3 @@ class icon_box1() extends Elementor\Widget_Base {
 }
 ?>
 
-
-WooXperto's
-
-WooXperto

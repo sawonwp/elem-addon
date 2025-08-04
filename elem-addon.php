@@ -26,7 +26,9 @@
     require_once(__DIR__. '/widgets/read-more.php');
     require_once(__DIR__. '/widgets/in-scroll.php');
     require_once(__DIR__. '/widgets/text-box.php');
-   require_once(__DIR__. '/widgets/pricing.php');
+    require_once(__DIR__. '/widgets/pricing.php');
+    require_once(__DIR__. '/widgets/custom-heading.php');
+    require_once(__DIR__. '/widgets/cascade-img.php');
 
 
     //register class
@@ -35,7 +37,9 @@
     $widgets_register->register(new \elem_read_more());
     $widgets_register->register(new \elem_in_scroll());
     $widgets_register->register(new \widget5());
-   $widgets_register->register(new \pricing());
+    $widgets_register->register(new \pricing());
+    $widgets_register->register(new \elem_custom_heading());
+    $widgets_register->register(new \elem_cascade_img());
    
  }
 
@@ -48,6 +52,8 @@ function elem_addon_reg_dep(){
    wp_enqueue_style('read-more-css', plugins_url('assets/css/read-more.css', __FILE__), '1.0.0');
    wp_enqueue_style('text-box-css', plugins_url('assets/css/text-box.css', __FILE__), '1.0.0');
    wp_enqueue_style('pricing-css', plugins_url('assets/css/pricing.css', __FILE__), '1.0.0');
+   wp_enqueue_style('custom-heading-css', plugins_url('assets/css/custom-heading.css', __FILE__), '1.0.0');
+   wp_enqueue_style('cascade-img-css', plugins_url('assets/css/cascade-img.css', __FILE__), '1.0.0');
    
    wp_enqueue_script('jquery');
    wp_enqueue_script('in-scroll-js', plugins_url('assets/js/in-scroll.js', __FILE__), '1.0.0', ['jquery']);

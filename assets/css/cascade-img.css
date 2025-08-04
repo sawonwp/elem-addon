@@ -1,0 +1,8 @@
+.cascade_wrapper{
+    position: relative;
+}
+
+.cascade_wrapper  img{
+    position: absolute;
+    border: 2px solid red!important;
+}
