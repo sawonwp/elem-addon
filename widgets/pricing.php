@@ -172,7 +172,8 @@ class  pricing extends Elementor\Widget_Base {
 						'type' => \Elementor\Controls_Manager::COLOR,
                         'default' => '#07E60F',
 						'selectors' => [
-							'{{WRAPPER}} {{CURRENT_ITEM}} svg' => 'fill: {{VALUE}}'
+							'{{WRAPPER}} {{CURRENT_ITEM}} svg' => 'fill: {{VALUE}}',
+                            '{{WRAPPER}} {{CURRENT_ITEM}} i' => 'color: {{VALUE}}',
 						],
 					],
 				],
@@ -604,7 +605,8 @@ class  pricing extends Elementor\Widget_Base {
             'size_units' => ['px', '%', 'em', 'rem', 'vw' ],
             'selectors' => [
                 '{{WRAPPER}} .package_name' => 'margin-bottom: {{SIZE}}{{UNIT}}',     
-                '{{WRAPPER}}.table-style8 .package_name'  => 'margin-bottom: {{SIZE}}{{UNIT}}'
+                '{{WRAPPER}}.table-style8 .package_name'  => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                '{{WRAPPER}}.table-style4 .package_name' => 'gap: {{SIZE}}{{UNIT}};'
             ],
             'default' => [
                 'unit' => 'px',
@@ -612,6 +614,26 @@ class  pricing extends Elementor\Widget_Base {
             ],
             'condition' => [
                 'pricing_type_style!' => 'style3',
+            ]
+
+        ]  
+       );
+
+       $this->add_responsive_control(
+        'icon_package_spacing', 
+        [
+            'label' => esc_html__('Icon Spacing', 'elem_addon'),
+            'type' => Elementor\Controls_manager::SLIDER,
+            'size_units' => ['px', '%', 'em', 'rem', 'vw' ],
+            'selectors' => [
+                '{{WRAPPER}}.table-style4 .package_name' => 'gap: {{SIZE}}{{UNIT}};'
+            ],
+            'default' => [
+                'unit' => 'px',
+                'size' => 10,
+            ],
+            'condition' => [
+                'pricing_type_style' => 'style4',
             ]
 
         ]  
@@ -892,6 +914,9 @@ class  pricing extends Elementor\Widget_Base {
                 'horizontal' => [
                     'icon' => 'eicon-arrow-down',
                 ],
+                'top-right' => [
+                    'icon' => 'eicon-angle-right',
+                ],
 
             ],
             'selectors' => [
@@ -1011,6 +1036,7 @@ class  pricing extends Elementor\Widget_Base {
                 ], 
                 'selectors' => [
                     '{{WRAPPER}} li.list svg' => 'margin-right: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} li.list i' => 'margin-right: {{SIZE}}{{UNIT}}',
                 ],
             ]
         );
@@ -1349,18 +1375,28 @@ protected function render(): void {
                     <p><?php echo esc_html($settings['featured']); ?></p>
                 </div>
             </div>
-        <?php endif; ?>
+        <?php endif; ?>        
 
         <div class="pricing_content_wrap">
-            <div class="package_name">                         
+        <?php if($settings['pricing_type_style'] != 'style4') : ?>
 
+            <div class="package_name">
                 <h3><?php echo esc_html($settings['package_name']); ?>
                     <?php if($settings['badge_position'] === 'block' && ($settings['pricing_type_style'] === 'style2')) : ?> 
                     <span class="badge_inner"> <?php echo esc_html($settings['featured']) ?> </span>
                     <?php endif; ?>                   
-                </h3>
-                 
+                </h3>                 
             </div>
+         <?php endif; ?> 
+
+            <?php if($settings['pricing_type_style'] === 'style4') : ?>
+            <div class="package_name">
+               <div class="pack_icon">
+                    <?php \Elementor\Icons_Manager::render_icon($settings['package_icon'], ['aria-hidden' => 'true']); ?> 
+               </div> 
+                <h3><?php echo esc_html($settings['package_name']) ?> </h3>
+            </div>
+            <?php endif; ?> 
 
             
         
@@ -1379,6 +1415,8 @@ protected function render(): void {
                 <?php endif; ?>
                 <sub class="type_txt" ><?php echo esc_html($settings['package_type']); ?></sub>
             </div>
+
+
         
             <?php if (!empty($settings['list']) && is_array($settings['list'])) : ?>
                 <ul class="list_wrapper">

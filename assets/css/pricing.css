@@ -177,9 +177,14 @@ ul.list_wrapper svg {
     transform-origin: top left;
     margin-left: 26px;
 }
-.elementor-7 .align-horizontal .badge_wrapper  .badge_inner p {
+
+
+.elementor-7 .align-horizontal .badge_wrapper  .badge_inner p
+{
     transform: rotate(180deg);
 }
+
+
 .elementor-widget-container .currency_sign {
     display: inline-block !important;
     will-change: transform;
@@ -197,9 +202,18 @@ ul.list_wrapper svg {
     margin: 0 auto;
 }
 
-
+/* 
 .table-style4 .pac_price_str {
-     grid-row: 5/span 1;
+     grid-row: 1/span 1;
+} */
+
+.table-style4 .package_name {
+    display: flex;
+    align-items: center;
+}
+
+.table-style4 .package_name h3{
+    text-align: left!important;
 }
 
 
