@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id ="data"> </p> 
+    <script>
+</script>
+</body>
+</html>
+
+<script>
+    var age = document.getElementById("data");
+
+    // function toinch(numb){
+    //     let height =  numb*2.54;
+    //     return age.innerHTML =  height;
+    // }
+
+    // tofeet = toinch(5);
+
+</script>
+
+<!-- <script>
+    var data = document.getElementById("data"); 
+
+    function mToGdg(number){
+        const number2 = number*1760;
+        return data.innerHTML =  number2;
+    }
+
+    mToGdg(10);
+</script>
+
+<script>
+    function kiloToCal(kilo){
+        let calo = kilo*860;
+        return data.innerHTML = calo;
+    }
+    kiloToCal(5);
+</script>
+
+<script>
+    function hrToSec(hr){
+        let sec = hr*3600;
+        return data3.innerHTML = sec;
+    }
+
+    hrToSec(3);
+</script>
+
+<script>
+    function togdg(gdg){
+        let meter = gdg*0.91;
+        return data.innerHTML = meter ;
+    }
+    togdg(58);
+</script> -->
+
+<!-- <script>
+    function taxAmo(income){
+        let tax ;
+        if(income<=50000){
+            tax = (income/100)*10;
+            return data.innerHTML = tax;
+        }else if(income >= 50001 && income <= 100000){
+            tax = (income/100)*20;
+            return data.innerHTML = tax;
+        } else {
+            tax = (income/100)*50;
+            return data.innerHTML = tax;
+        }
+    }
+    taxAmo(200000);
+    
+</script> -->
+
+<!-- <script>
+    // second to hr min and sec convertion. 
+    function findtime(time){
+        if(time<60){
+            const result = "0:0:" + time;
+            return data.innerHTML = result;             
+        } else if(time >= 60 && time < 3600){
+            const minutes = parseInt(time/60);
+            const seconds = time % (minutes*60);
+            const result = "0:" + minutes + ":"+ seconds;
+            return data.innerHTML = result;
+        } 
+        else if(time < 3660){
+            const hrs = parseInt(time/3600);
+            const reminder = time % (hrs*3600);
+            const result = hrs + ":" + "0" + ":" + reminder ;
+            return data.innerHTML = result;
+        }
+        else{
+            const hrs = parseInt(time/3600);
+            const reminder = time % (hrs*3600);
+            const minutes = parseInt(reminder/60);
+            const seconds = reminder % (minutes*60)
+            const result = hrs + ":" + minutes + ":" + seconds ;
+            return data.innerHTML = result;            
+        }
+    }
+
+    findtime(3700);
+</script> -->
+
+<script>
+    //day to month calculator
+    function age(time){
+        if(time<30){
+            //return data.innerHTML = time + " days" ;
+            return data.innerHTML = " 0 Year "  + "0 month " + time + " Days" ;
+        }else if(time >= 30 && time < 365){
+            month = parseInt(time / 30);
+            days = time - month*30;
+            return data.innerHTML =  month + "Month "+ days + " Days" ;
+        }else{
+            year = parseInt(time/365);
+            reminder = time - year*365;
+            if(reminder >= 30){
+                month = parseInt(reminder/30);
+                days = reminder - month*30;
+                return data.innerHTML = year + " Year "  + month + " month " + days + " Days" ;
+            }
+            return data.innerHTML = year + " Year " + reminder + " Days"
+
+        }
+    }
+    age(10);
+</script>
+
+<script>
+    function leapCount(year){
+        if(year % 4 === 0){
+            return data.innerHTML = "LeapYear";
+            
+        }else if(year % 400 === 0){
+            return data.innerHTML ="Leap Year";
+        }else {
+            return data.innerHTML ="Not Leap Year";
+        }
+
+    }
+
+    leapCount(2052);
+</script>
+
+<!-- <script>
+    function packCost(weight){
+        if(weight<10){
+            return data.innerHTML = 100;
+        }else if(weight<20){
+            return data.innerHTML = 200;
+        }else if(weight<50){
+            return data.innerHTML = 1000;
+        }else{
+            cost = weight*100;
+            return data.innerHTML = cost;
+        }
+}
+packCost(300);
+</script> -->
+
+<!-- <script>
+    function avgOdd(number){
+        const numberBox = [];
+        for(const item of number){
+            if(item % 2 != 0){
+                numberBox.push(item);
+            }            
+            console.log(numberBox);
+        }
+
+        sum = 0; 
+        for (const numberlist of numberBox){
+            sum += numberlist;
+        }
+        const add = sum;
+        const avg = add/2;
+        return data.innerHTML = avg;
+
+         
+    }
+    const setOfNumb = [25, 12, 13];
+    avgOdd(setOfNumb);
+</script> -->
+<script>
+  
+const player  = {
+    name: "sakib",
+    age: 35, 
+    sports: "cricket",
+    team: "BD",
+}
+
+console.log(player.team);
+
+
+
+const laptop = {
+    brand: "Assus",
+    price: 35000,
+    hardDisc: '512gb',
+    ram: '16gb',
+    screensize: '14.6 inch'
+}
+console.log(laptop.screensize);
+
+
+
+const favPlace = {
+    name  : "Cox's Bazar",
+    distance: '400km', 
+    popularity: 'High',
+    path: {
+        first_step: "uttata to Train Station",
+        second_step: "Rail to coxbazar",
+        distance: "Covered"
+    }
+
+}
+
+for(place in favPlace) {
+    const value = favPlace[place]
+    console.log(place, value);
+}
+
+const book =  {
+    name: 'ABC', 
+    writer: 'W.A.CCCC',
+    price: 350
+}
+const objvalues = Object.values(book);
+console.log(objvalues);
+
+
+const article =  {
+    title: "Learning JS", 
+    category: "Programming",
+    Programming: "New"
+}
+
+if(article.hasOwnProperty('title')) {
+    console.log("true");
+}else{
+    console.log("False");
+}
+
+
+if("category" in article) {
+    console.log("True-22");
+}else{
+    console.log('False-22');
+}
+
+
+
+const artvalue = Object.keys(article);
+const isfound = artvalue.includes("title");
+console.log(isfound);
+
+const phone = {
+    name : "Samsung", 
+    price: 25000, 
+    model: "Galaxy AJ1"
+}
+
+const storekeys =  Object.keys(phone);
+console.log(storekeys);
+
+
+for(item  of storekeys){
+    value = phone[item];
+    console.log(item, value);
+}
+
+const headphone = {
+    name: 'sony axo30',
+    price: 3000, 
+    soundrange: '5mtr'
+}
+
+
+Object.freeze(headphone);
+headphone.name = "New Name"
+delete headphone.price;
+headphone.warenty = "2 years";
+console.log(headphone);
+
+
+const player23 = {
+    name : "Messi",
+    club: 'Intermiami',
+    goal : 100,
+}
+
+Object.seal(player23);
+delete player23.goal;
+player23.age = 35;
+player23.name = "Hello"
+console.log(player23);
+
+
+const animal2 ={
+    name: "Tigar",
+    location: "Sundarban"
+}
+Object.freeze(animal2);
+
+animal2.location ="New loccation";
+animal2.weight = 250;
+
+console.log(animal2);
+
+
+
+
+
+</script>

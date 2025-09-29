@@ -6,7 +6,7 @@ class  pricing extends Elementor\Widget_Base {
         return 'Pricing Table';
     }
     public function get_title():string {
-        return 'Pricing Table3333';
+        return 'Pricing Table';
     }
     public function get_icon(): string {
         return 'eicon-price-table';
@@ -41,8 +41,7 @@ class  pricing extends Elementor\Widget_Base {
                     'style3' => esc_html('Style 3', 'elem_addon'),
                     'style4' => esc_html('Style 4', 'elem_addon'),
                     'style5' => esc_html('Style 5', 'elem_addon'),
-                    'style6' => esc_html('Style 6', 'elem_addon'),
-                    'style7' => esc_html('Style 7', 'elem_addon'),                    
+                    'style6' => esc_html('Style 6', 'elem_addon'),                    
                 ], 
                 'prefix_class' => 'table-',
             ]
@@ -102,6 +101,20 @@ class  pricing extends Elementor\Widget_Base {
        );
 
        $this->add_control(
+            'package_pos', 
+            [
+                'label' => esc_html__('Package Position', 'elem_addon'),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'row' => ['icon' => 'eicon-arrow-right'],
+                    'column' => ['icon' => 'eicon-wrap'],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .pac_price_str'  => 'flex-direction: {{VALUE}}',
+                ]
+            ]
+       );
+       $this->add_control(
             'isfeatured', 
             [
                 'label' => esc_html__('Enable Badge', 'elem_addon'),
@@ -113,7 +126,6 @@ class  pricing extends Elementor\Widget_Base {
             ]
        );
 
-
         $this->add_control(
         'featured', 
         [
@@ -122,12 +134,11 @@ class  pricing extends Elementor\Widget_Base {
             'condition' => [
                 'isfeatured' => 'yes',
             ]
-
         ]
        );
 
        $this->add_control(
-        'disable_list', 
+        'hide_list', 
         [
             'label' => esc_html('Hide List', 'elem_addon'),
             'type' => \Elementor\Controls_Manager::SWITCHER,
@@ -135,8 +146,6 @@ class  pricing extends Elementor\Widget_Base {
             'label_no' => esc_html__('No', 'elem_addon'), 
             'default' => 'no',
             'return_value' => 'yes',
-
-
         ]
        );
 
@@ -146,9 +155,9 @@ class  pricing extends Elementor\Widget_Base {
         $this->add_control(
 			'list',
 			[
-				'label' => esc_html__( 'Repeater List', 'textdomain' ),
-				'type' => \Elementor\Controls_Manager::REPEATER,
-				'fields' => [
+            'label' => esc_html__( 'Repeater List', 'textdomain' ),
+            'type' => \Elementor\Controls_Manager::REPEATER,
+            'fields' => [
 					[
 						'name' => 'list_title',
 						'label' => esc_html__('Title', 'textdomain' ),
@@ -210,7 +219,7 @@ class  pricing extends Elementor\Widget_Base {
 				'title_field' => '{{{ list_title }}}',
               
                 'condition' => [
-                    'disable_list!' => 'yes',
+                    'hide_list!' => 'yes',
                 ],
 			],
 
@@ -246,10 +255,30 @@ class  pricing extends Elementor\Widget_Base {
             'btm_txt', 
             [
                 'type' => \Elementor\Controls_manager::TEXT,
-                'label' => esc_html__('Bottom Text', 'elem_addon'),
+                'label' => esc_html__('Description Text', 'elem_addon'),
                 'placeholder' => esc_html__('Bottom Text', 'elem_addon'),                
             ]
         );  
+        $this->add_control(
+            'btm_txt_pos', 
+            [
+                'label' => esc_html__('Description Position'),
+                'type' => \Elementor\Controls_manager::SELECT, 
+                'options' => [
+                    'before_title' => esc_html__('Before Title', 'elem_addon'),
+                    'after_title' => esc_html__('After Title', 'elem_addon'),
+                    'after_icon' => esc_html__('After Icon', 'elem_addon'),
+                    'after_pricing' => esc_html__('After Pricing', 'elem_addon'),
+                    'after_list' => esc_html__('After list', 'elem_addon'),
+                    'after_button' => esc_html__('After button', 'elem_addon'),
+                ], 
+                'default' => 'after_button',
+                'prefix_class' => 'txt_',
+                'condition' => [
+                    'pricing_type_style' => 'style5',
+                ]
+            ]
+        );
        
 
        $this->end_controls_section();
@@ -305,10 +334,10 @@ class  pricing extends Elementor\Widget_Base {
                 'size_units' => ['px', '%', 'em', 'rem'],
                 'default' =>
                 [
-                    'top' => 15,
-                    'right' => 20, 
+                    'top' => 0,
+                    'right' => 0, 
                     'bottom' => 15,
-                    'left' => 20,
+                    'left' => 0,
                     'unit' => 'px',
                     'isLinked' => false,
                 ],                
@@ -319,243 +348,17 @@ class  pricing extends Elementor\Widget_Base {
         );
 
         $this->end_controls_section();
-    //start price
-        $this->start_controls_section(
-        'Package_price', 
-        [
-            'label' => esc_html('Price', 'elem_addon'),
-            'tab' => Elementor\Controls_manager::TAB_STYLE,
-        ]        
-       );
 
-       $this->add_control(
-        'price_color', 
-        [
-            'label' => esc_html('Color', 'elem_addon'),
-            'type' => \Elementor\Controls_manager::COLOR,
-            'selectors' => [
-                '{{WRAPPER}} .pac_price_str' => 'color:{{VALUE}};',
-            ]
-        ]
-       );
-       $this->add_control(
-        'type_color',
-        [
-            'label' => esc_html('Package Type Color', 'elem_addon'),
-            'type' => \Elementor\Controls_manager::COLOR,            
-            'selectors' => [
-                '{{WRAPPER}} .pac_price_str sub' => 'color: {{VALUE}}',  
-            ]
-        ]
-       );
-
-       $this->add_control(
-        'price_bg_color', 
-        [
-            'label' => esc_html__('Background', 'elem_addon'),
-            'type' => \Elementor\Controls_manager::COLOR,
-            'selectors' => [
-                '{{WRAPPER}} .pac_price_str' => 'background: {{VALUE}}',                
-            ],             
-                        
-
-        ]
-       );
-
-       $this->add_control(
-        'currency_scale',
-    [
-        'label' => esc_html__('Currency Scale', 'elem_addon'),
-        'type' => \Elementor\Controls_Manager::SLIDER,
-        'size_units' => ['%'],
-        'range' => [
-            'min' => 10,
-            'max' => 100,
-            'step' => 1,
-        ],
-        'default' => [
-            'size' => 80,
-            'unit' => '%',
-        ],
-        'selectors' => [
-            '{{WRAPPER}} .currency_sign' => '
-                display: inline-block;
-                transform: scale(calc({{SIZE}}/100));
-                transform-origin: center;
-                line-height: 1;
-            ',
-        ],
-    ]);
-
-           $this->add_control(
-        'pack_type_size',
-        [
-        'label' => esc_html__('Package Type Size', 'elem_addon'),
-        'type' => \Elementor\Controls_Manager::SLIDER,
-        'size_units' => ['%'],
-        'range' => [
-            'min' => 10,
-            'max' => 100,
-            'step' => 1,
-        ],
-        'default' => [
-            'size' => 50,
-            'unit' => '%',
-        ],
-        'selectors' => [
-            '{{WRAPPER}} .type_txt' => '
-                display: inline-block;
-                transform: scale(calc({{SIZE}}/100));
-                transform-origin: center;
-                line-height: 1;
-                text-align:center;
-                display: block;
-            ',
-        ],
-    ]);
-
-
-
-       $this->add_responsive_control(
-        'price_width', 
-        [
-            'label' => esc_html__('Width', 'elem_addon'),
-            'type' => \Elementor\Controls_manager::SLIDER,
-            'size_units' => ['px', '%', 'rem', 'em'],
-            'range' => 
-            [
-                'px' =>  [
-                    'min' => 50, 
-                    'max' => 1000,
-                    'step' => 10,
-                ], 
-                '%' => [
-                    'min' => 10,
-                    'max' => 100,
-                    'step' => 1,
-                ],
-            ],
-            'default' => 
-            [
-                'unit' => 'px',
-                'size' => '200',
-            ],
-
-            'condition' => [
-                 'pricing_type_style' => ['style3', 'style5' ],                 
-             ],
-
-            'selectors' => [
-                '{{WRAPPER}} .pac_price_str' => 'width:{{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
-            ]
-            
-        ]
-       );
-
-       $this->add_control(
-        'price_border-radius', 
-        [
-            'label' => esc_html__('Border-radius', 'elem_addon'),
-            'type' => \Elementor\Controls_manager::DIMENSIONS, 
-            'size_units' => ['px', '%', 'rem', 'em'],
-            'selectors' => [
-                '{{WRAPPER}} .pac_price_str' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-            ], 
-            
-        ]
-       );
-
-       $this->add_group_control(
-            \Elementor\Group_Control_Border::get_type(),
-            [
-                'name' => 'pricing_border',
-                'selector' => '{{WRAPPER}} .pac_price_str'
-            ]
-        );
-
-
-       $this->add_control(
-        'price_padding', 
-        [
-            'label' => esc_html__('Padding', 'elem_addon'),
-            'type' => \Elementor\Controls_manager::DIMENSIONS,
-            'size_units' => ['px', '%', 'em', 'rem'],
-            'selectors' => [
-                '{{WRAPPER}} .pac_price_str' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
-            ],
-            'default' => [
-                'unit' => 'px',
-                'top' => 10,
-                'right' => 10,
-                'bottom' => 10,
-                'left' => 10,
-            ]
-
-        ]
-       );
-
-       $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-			[
-				'name' => 'price_typography',
-                'label' => esc_html__('Typography', 'elem_addon'),
-                'selector' => '{{WRAPPER}} .pac_price_str',
-                'global' => [
-                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_ACCENT,
-                ], 
-			]   
-       );
-
-        $this->add_responsive_control(
-            'pricing_spacing', 
-            [
-                'label' => esc_html('Spacing', 'elem_addon'),
-                'type' => \Elementor\Controls_manager::SLIDER,
-                'label_block' => true,
-                'size_units' => ['px', '%', 'em', 'rem' ],
-                'default' => [
-                    'unit'=> 'px', 
-                    'top' => 40,                    
-                    'bottom' => 30,                    
-                ], 
-                'selectors' => [
-                    '{{WRAPPER}} .pac_price_str' => 'padding-bottom: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'pricing-top', 
-            [
-                'label' => esc_html__('Enable Pricing Position', 'elem_addon'),
-                'type' => \Elementor\Controls_Manager::CHOOSE,
-                'options' => [
-                    'top' => [ 'icon' => 'eicon-arrow-up'],
-                    'top_nolap' => ['icon' => 'eicon-arrow-down'],
-                    'normal' => ['icon' => 'eicon-parallax'],
-                    'overlap' => ['icon' => 'eicon-v-align-top'],
-                ],
-                'default' => 'normal',
-                'prefix_class' => 'price-position-',
-                'condition' => [
-                    'pricing_type_style' => 'style3',
-                ],                 
-            ]
-        );
-
-        
-        
-         $this->end_controls_section();
-
-//Package starts
+    //Package starts
 
         $this->start_controls_section(
         'Package_wrapper', 
         [
-            'label' => esc_html('Package', 'elem_addon'),
+            'label' => esc_html('Package Title', 'elem_addon'),
             'tab' => Elementor\Controls_manager::TAB_STYLE,
         ]        
        );
+
 
        $this->add_control(
         'pac_elem', 
@@ -567,11 +370,16 @@ class  pricing extends Elementor\Widget_Base {
             ],
             'prefix_class' => 'element-style-',
             'options' => [
+                'none' => esc_html__("Default", 'elem_addon'),
                 'triangle' => esc_html__('Triangle', 'elem_addon'),
                 'bar' => esc_html__('Bar', 'elem_addon'),
                 'circle' => esc_html__('Circle', 'elem_addon'),
                 'ltriangle' => esc_html__('Hexagon', 'elem_addon'),
+                'overlaped' => esc_html('Overlaped', 'elem_addon'),
 
+            ],
+            'condition' => [
+                'pricing_type_style' => 'style1'
             ],
         ]
        );
@@ -593,19 +401,33 @@ class  pricing extends Elementor\Widget_Base {
             'type' => Elementor\Controls_manager::COLOR,
             'selectors' => [
                 '{{WRAPPER}} .package_name' => 'background-color: {{VALUE}}',
-                '{{WRAPPER}}.table-style1 .package_name::after' => 'background-color: {{VALUE}}'
-            ]
+                '{{WRAPPER}}.table-style1 .package_name::after' => 'background-color: {{VALUE}}',
+                '{{WRAPPER}}.table-style1 .pricing_box_wrapper::after' => 'background-color: {{VALUE}}'
+            ], 
+            'default' => '#61C1CE',
         ]        
        );
+       
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'pack_typography',
+                'label' => esc_html__('Typography', 'elem_addon'),
+                'selector' => '{{WRAPPER}} .package_name h3',
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_ACCENT,
+                ], 
+			]   
+       );
+
        $this->add_responsive_control(
         'package_spacing', 
         [
-            'label' => esc_html__('Spacing', 'elem_addon'),
+            'label' => esc_html__('Bottom Spacing', 'elem_addon'),
             'type' => Elementor\Controls_manager::SLIDER,
             'size_units' => ['px', '%', 'em', 'rem', 'vw' ],
             'selectors' => [
                 '{{WRAPPER}} .package_name' => 'margin-bottom: {{SIZE}}{{UNIT}}',     
-                '{{WRAPPER}}.table-style8 .package_name'  => 'margin-bottom: {{SIZE}}{{UNIT}}',
                 '{{WRAPPER}}.table-style4 .package_name' => 'gap: {{SIZE}}{{UNIT}};'
             ],
             'default' => [
@@ -614,11 +436,12 @@ class  pricing extends Elementor\Widget_Base {
             ],
             'condition' => [
                 'pricing_type_style!' => 'style3',
-            ]
-
+            ],
+            
         ]  
        );
 
+            ///conditional items
        $this->add_responsive_control(
         'icon_package_spacing', 
         [
@@ -639,47 +462,26 @@ class  pricing extends Elementor\Widget_Base {
         ]  
        );
 
-               $this->add_control(
+        $this->add_control(
             'pack_btn-radius', 
             [
                 'label' => esc_html('Border radius', 'elem_addon'),
-                'type' => \Elementor\Controls_manager::SELECT,
+                'type' => \Elementor\Controls_manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'default' => [
-                    'size' => '5px',
+                    'top' => 0,
+                    'right' => 0,
+                    'bottom' => 0,
+                    'left' => 0,
                     'unit' => 'px',
-                ],
-
-                'options' => [
-                    'None' => esc_html__('None', 'elem_addon'),
-                    '5px'  => esc_html__('Extra Small', 'elem_addon'),
-                    '10px'  => esc_html__('Small', 'elem_addon') ,
-                    '15px'  => esc_html__('Normal', 'elem_addon'),
-                    '25px' => esc_html__('Large', 'elem_addon'),
-                    '50px' => esc_html__('Extra large', 'elem_addon'),                     
-
-                ],
+                ],                               
                 'selectors' => [
-                    '{{WRAPPER}} .package_name' => 'border-radius: {{SIZE}}',
+                    '{{WRAPPER}} .package_name' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
                 ]
             ]
         );
 
-
-               $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-			[
-				'name' => 'pack_typography',
-                'label' => esc_html__('Typography', 'elem_addon'),
-                'selector' => '{{WRAPPER}} .package_name h3',
-                'global' => [
-                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_ACCENT,
-                ], 
-			]   
-       );
-
-
-         $this->add_responsive_control(
+        $this->add_responsive_control(
             'pack_padding', 
             [
                 'label' => esc_html__('Padding', 'elem_addon'),
@@ -720,7 +522,8 @@ class  pricing extends Elementor\Widget_Base {
             'selectors' => [
                 '{{WRAPPER}} .pack_icon svg' => 'fill:{{VALUE}}'  ,
                 '{{WRAPPER}} .pack_icon i' => 'color:{{VALUE}}'  ,
-            ]
+            ], 
+            'default'=> '#61c1ce'
         ], 
         
        );
@@ -834,10 +637,226 @@ class  pricing extends Elementor\Widget_Base {
 
         ]
        );
+         $this->end_controls_section();
 
-      
+             
+    //start price
+        $this->start_controls_section(
+        'Package_price', 
+        [
+            'label' => esc_html('Price', 'elem_addon'),
+            'tab' => Elementor\Controls_manager::TAB_STYLE,
+        ]        
+       );
+
+       $this->add_control(
+        'price_color', 
+        [
+            'label' => esc_html('Color', 'elem_addon'),
+            'type' => \Elementor\Controls_manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .pac_price_str' => 'color:{{VALUE}};',
+            ]
+        ]
+       );       
+       $this->add_control(
+        'type_color',
+        [
+            'label' => esc_html('Package Type Color', 'elem_addon'),
+            'type' => \Elementor\Controls_manager::COLOR,            
+            'selectors' => [
+                '{{WRAPPER}} .pac_price_str sub' => 'color: {{VALUE}}',  
+            ]
+        ]
+       );
+
+       $this->add_control(
+        'price_bg_color', 
+        [
+            'label' => esc_html__('Background', 'elem_addon'),
+            'type' => \Elementor\Controls_manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .pac_price_str' => 'background: {{VALUE}}',                
+            ],             
+                        
+
+        ]
+       );
+
+       $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'price_typography',
+                'label' => esc_html__('Typography', 'elem_addon'),
+                'selector' => '{{WRAPPER}} .pac_price_str .pack_price',
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_PRIMARY,
+                ], 
+			]   
+       );
+
+       $this->add_control(
+        'price_position', 
+        [
+            'label' => esc_html("Before Button", 'elem_addon'),
+            'type' => \Elementor\Controls_manager::SWITCHER,
+            'label_yes' => esc_html__('Enable', 'elem_addon'),
+            'label_no' => esc_html__('Disable', 'elem_addon'),
+            'default' => 'no',
+            'return_value' => 'yes',
+            'prefix_class' => 'price_btm_',  
+            
+            'condition'    => [
+            'btn_to_top!' => 'yes', // hide price option if button option is yes
+        ]
+            
+        ]
+       );
+
+       $this->add_control(
+        'currency_scale',
+    [
+        'label' => esc_html__('Currency Scale', 'elem_addon'),
+        'type' => \Elementor\Controls_Manager::SLIDER,
+        'size_units' => ['%'],
+        'range' => [
+            'min' => 10,
+            'max' => 100,
+            'step' => 1,
+        ],
+        'default' => [
+            'size' => 80,
+            'unit' => '%',
+        ],
+        'selectors' => [
+            '{{WRAPPER}} .currency_sign' => '
+                display: inline-block;
+                transform: scale(calc({{SIZE}}/100));
+                transform-origin: center;
+                line-height: 1;
+            ',
+        ],
+    ]);
+
+    $this->add_responsive_control(
+        'price_width', 
+        [
+            'label' => esc_html__('Width', 'elem_addon'),
+            'type' => \Elementor\Controls_manager::SLIDER,
+            'size_units' => ['px', '%', 'rem', 'em'],
+            'range' => 
+            [
+                'px' =>  [
+                    'min' => 50, 
+                    'max' => 1000,
+                    'step' => 10,
+                ], 
+                '%' => [
+                    'min' => 10,
+                    'max' => 100,
+                    'step' => 1,
+                ],
+            ],
+            'default' => 
+            [
+                'unit' => 'px',
+                'size' => '200',
+            ],
+
+            'condition' => [
+                 'pricing_type_style' => 'style3',                 
+             ],
+
+            'selectors' => [
+                '{{WRAPPER}} .pac_price_str' => 'width:{{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+            ]
+            
+        ]
+       );
+
+       $this->add_control(
+        'price_border-radius', 
+        [
+            'label' => esc_html__('Border-radius', 'elem_addon'),
+            'type' => \Elementor\Controls_manager::DIMENSIONS, 
+            'size_units' => ['px', '%', 'rem', 'em'],
+            'selectors' => [
+                '{{WRAPPER}} .pac_price_str' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ], 
+            'condition' => [
+                 'pricing_type_style' => 'style3',                 
+             ],
+            
+        ]
+       );
+
+       $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'pricing_border',
+                'selector' => '{{WRAPPER}} .pac_price_str'
+            ]
+        );
+
+
+       $this->add_control(
+        'price_padding', 
+        [
+            'label' => esc_html__('Padding', 'elem_addon'),
+            'type' => \Elementor\Controls_manager::DIMENSIONS,
+            'size_units' => ['px', '%', 'em', 'rem'],
+            'selectors' => [
+                '{{WRAPPER}} .pac_price_str' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+            ],
+            'default' => [
+                'unit' => 'px',
+                'top' => 10,
+                'right' => 10,
+                'bottom' => 10,
+                'left' => 10,
+            ]
+
+        ]
+       );
        
+        $this->add_responsive_control(
+            'pricing_spacing', 
+            [
+                'label' => esc_html('Spacing', 'elem_addon'),
+                'type' => \Elementor\Controls_manager::SLIDER,
+                'label_block' => true,
+                'size_units' => ['px', '%', 'em', 'rem' ],
+                'default' => [
+                    'unit'=> 'px', 
+                    'size' => 30,                    
+                ], 
+                'selectors' => [
+                    '{{WRAPPER}} .pac_price_str' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
 
+        $this->add_control(
+            'pricing-top', 
+            [
+                'label' => esc_html__('Enable Pricing Position', 'elem_addon'),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'top' => [ 'icon' => 'eicon-arrow-up'],
+                    'top_nolap' => ['icon' => 'eicon-arrow-down'],
+                    'normal' => ['icon' => 'eicon-parallax'],
+                    'overlap' => ['icon' => 'eicon-v-align-top'],
+                ],
+                'default' => 'normal',
+                'prefix_class' => 'price-position-',
+                'condition' => [
+                    'pricing_type_style' => 'style3',
+                ],                 
+            ]
+        );
+
+        
+        
          $this->end_controls_section();
 
        //badge starts//
@@ -882,6 +901,19 @@ class  pricing extends Elementor\Widget_Base {
         ]
        );
 
+       
+       $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'padge_typography',
+                'label' => esc_html__('Typography', 'elem_addon'),
+                'selector' => '{{WRAPPER}} .badge_inner',
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_ACCENT,
+                ], 
+			]   
+       );
+
        $this->add_control(
         'badge_position', 
         [
@@ -902,7 +934,7 @@ class  pricing extends Elementor\Widget_Base {
                     
                 ], 
                 'inline' => [
-                    'icon' => 'eicon-info-circle-o',
+                    'icon' => 'eicon-h-align-stretch',
                 ], 
                 'block' => [
                     'icon' => 'eicon-meta-data',
@@ -916,8 +948,7 @@ class  pricing extends Elementor\Widget_Base {
                 ],
                 'top-right' => [
                     'icon' => 'eicon-angle-right',
-                ],
-
+                ],                
             ],
             'selectors' => [
                 '{{WRAPPER}}.align-left .badge_inner' => 'float : {{VALUE}};',
@@ -929,17 +960,6 @@ class  pricing extends Elementor\Widget_Base {
         ]
        );
 
-       $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-			[
-				'name' => 'padge_typography',
-                'label' => esc_html__('Typography', 'elem_addon'),
-                'selector' => '{{WRAPPER}} .badge_inner',
-                'global' => [
-                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_ACCENT,
-                ], 
-			]   
-       );
        $this->add_responsive_control(
         'badge_padding', 
         [
@@ -956,9 +976,7 @@ class  pricing extends Elementor\Widget_Base {
             'selectors' => [
                 '{{WRAPPER}} span.badge_inner' => 'padding: {{SIZE}}{{UNIT}};'
             ],
-            'condition' => [
-                'badge_position' => 'block', 
-            ]
+            
         ]
        );
 
@@ -979,14 +997,43 @@ class  pricing extends Elementor\Widget_Base {
                 [
                     '{{WRAPPER}} span.badge_inner' => 'Border-radius: {{SIZE}}{{UNIT}};',
                 ],
-
-                'condition' => [
-                'badge_position' => 'block', 
-            ]
-
-                
             ]
          );  
+
+         $this->add_control(
+            'badge_cus_pos', 
+            [
+                'label' => esc_html__('Custom Badge Position', 'elem_addon'),
+                'type' => \Elementor\Controls_manager::SWITCHER,
+                'label_yes' => esc_html__('Yes', 'elem_addon'),
+                'label_no' => esc_html__('No', 'elem_addon'),
+                'default' => 'no',
+                'return_value' => 'yes',                
+            ]
+         );
+
+         $this->add_responsive_control(
+            'badge_radius', 
+            [
+                'label' => esc_html__('Border Radius', 'elem_addon'),
+                'type' => \Elementor\Controls_manager::SLIDER, 
+                'size_units' => [ 'px','%'],
+                'default' => [
+                    'unit' => 'px',
+                    'top' => 0,
+                    'right' => 0,
+                    'bottom' => 0,
+                    'left' =>  0,
+                ],
+                'selectors' => 
+                [
+                    '{{WRAPPER}} span.badge_inner' => 'Border-radius: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+         );  
+
+
+
 
         $this->end_controls_section();
         
@@ -999,7 +1046,7 @@ class  pricing extends Elementor\Widget_Base {
                     'label' => esc_html('List', 'elem_addon'),
                     'tab' => \Elementor\Controls_manager::TAB_STYLE,
                     'condition' => [
-                        'disable_list!' => 'yes',
+                        'hide_list!' => 'yes',
                     ]
                 ]
             );
@@ -1100,6 +1147,57 @@ class  pricing extends Elementor\Widget_Base {
         ]
        );
 
+       $this->add_control(
+        'list_item_bg', 
+        [
+            'label' => esc_html__('List Item Bagckground'),
+            'type' => \Elementor\Controls_manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .list_wrapper li' => 'background-color: {{VALUE}}',
+            ]
+        ]
+       );
+
+       $this->add_control(
+        'list_item_bg_roundness', 
+        [
+            'label' => esc_html__('List Item Radius'),
+            'type' => \Elementor\Controls_manager::DIMENSIONS,
+            'size' => ['px', '%'],
+            'default' => [
+                'top' => 0,
+                'right' => 0,
+                'bottom' => 0,
+                'left' => 0,
+                'unit' => 'px'
+            ],
+
+            'selectors' => [
+                '{{WRAPPER}} .list_wrapper li' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+            ]
+        ]
+       );
+
+       $this->add_control(
+        'list_item_Padding', 
+        [
+            'label' => esc_html__('List Item Padding'),
+            'type' => \Elementor\Controls_manager::DIMENSIONS,
+            'size' => ['px', '%'],
+            'default' => [
+                'top' => 5,
+                'right' => 5,
+                'bottom' => 5,
+                'left' => 5,
+                'unit' => 'px'
+            ],
+
+            'selectors' => [
+                '{{WRAPPER}} .list_wrapper li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+            ]
+        ]
+       );
+
         $this->add_responsive_control(
             'list_padding', 
             [
@@ -1135,18 +1233,43 @@ class  pricing extends Elementor\Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'btn_to_top' , 
+            [
+                'label' => esc_html__("Button Before List" ,'elem_addon'),
+                'type' => \Elementor\Controls_manager::SWITCHER,
+                'label_yes' => esc_html__('Enable', 'elem_addon'),
+                'label_no' => esc_html__('Disable', 'elem_addon'),
+                'default' => 'no',
+                'return_value' => 'yes',
+                'prefix_class' => 'btn_top_',
+                'condition'    => [
+                    'price_position!' => 'yes', // hide button option if price_position is yes
+                ],
+            ]
+        );
+
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'btn_typo',
-                'label' => esc_html('Typography', 'elem_addon'),
+                'label' => esc_html__('Typography', 'elem_addon'),
                 'selector' =>  '{{WRAPPER}} .pack_btn a',   
                  'global' => [
                     'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_ACCENT,
                 ],              
-            ],
-               
+            ],              
 
+        );
+        $this->add_control(
+            'btn_box_shadow', 
+            [
+                'type' =>Elementor\Controls_manager::BOX_SHADOW, 
+                'label' => esc_html__('Box Shadow', 'elem_addon'),
+                'selectors' => [
+                    '{{WRAPPER}} .pack_btn a' => 'box-shadow: {{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{SPREAD}}px {{COLOR}};',
+                ]
+            ]
         );
 
 
@@ -1218,6 +1341,18 @@ class  pricing extends Elementor\Widget_Base {
             ]
         );
 
+        
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->add_control(
+            'line_hover', 
+            [
+                'type' => \Elementor\Controls_manager::DIVIDER,
+            ]
+        );
+
         $this->add_responsive_control(
             'btn_padd', 
             [
@@ -1237,10 +1372,6 @@ class  pricing extends Elementor\Widget_Base {
                 ],
             ]
          );
-
-        $this->end_controls_tab();
-
-        $this->end_controls_tabs();
 
         $this->add_control(
             'button_style', 
@@ -1273,28 +1404,7 @@ class  pricing extends Elementor\Widget_Base {
                 ]
             ] 
         );
-        $this->add_control(
-            'btn_padding',
-            [
-                'label' => esc_html__('Padding', 'elem_addon'),
-                'label_block' => true,
-                'type' => \Elementor\Controls_manager::DIMENSIONS,    
-                'size_units' => ['px', 'em', '%'],         
-                'default' =>
-                [
-                    'top' => '15',
-                    'right' => '20', 
-                    'bottom' => '15',
-                    'left' => '20',
-                    'unit' => 'px',
-                    'isLinked' => false,
-                ],                
-                'selectors' => [
-                    '{{WRAPPER}} a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
-                ]
-
-            ]
-        );
+        
 
         $this->add_control(
             'btn-radius', 
@@ -1329,19 +1439,6 @@ class  pricing extends Elementor\Widget_Base {
                 'selector' => '{{WRAPPER}} .pack_btn'
             ]
         );
-
-        // $this->add_control(
-        //     'hover_btn', 
-        //     [
-        //         'label' => esc_html__('Hover Animation', 'elem_addon'),
-        //         'type' => \Elementor\Controls_manager:: HOVER_ANIMATION,
-
-        //         'selectors' => [
-        //             '{{WRAPPER}} .pack_btn:hover' => 'backgrou'
-        //         ]
-        //     ]
-
-        // );
         
         $this->add_responsive_control(
             'btn_spacing', 
@@ -1360,6 +1457,65 @@ class  pricing extends Elementor\Widget_Base {
         );
 
        $this->end_controls_section();
+
+       $this->start_controls_section(
+            'des_txt', 
+            [
+                'label' => esc_html('Description Text', 'elem_addon'),
+                'tab' =>  \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+       );
+
+       $this->add_control(
+            'des_bg', 
+            [
+                'label' => esc_html__('Background', 'elem_addon'),
+                'type' => \Elementor\Controls_manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .btm_txt' => 'background: {{VALUE}};'
+                ],
+            ]
+       );
+
+       $this->add_control(
+            'des_color', 
+            [
+                'label' => esc_html__('Color', 'elem_addon'),
+                'type' => \Elementor\Controls_manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .btm_txt' => 'Color: {{VALUE}};'
+                ],
+            ]
+       );
+       $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'des_typography',
+                'label' => esc_html__('Typography', 'elem_addon'),
+                'selector' => '{{WRAPPER}} .btm_txt',                
+			]   
+       );
+
+       $this->add_control(
+            'des_padding', 
+            [
+                'label' => esc_html__('Padding', 'elem_addon'),
+                'type' => \Elementor\Controls_manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em', 'rem'],
+                'default' =>
+                [
+                    'top' => 0,
+                    'right' => 0, 
+                    'bottom' => 0,
+                    'left' => 0,
+                    'unit' => 'px',
+                ],                
+                'selectors' => [
+                    '{{WRAPPER}} .btm_txt' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ]
+            ]
+        );
+       $this->end_controls_section(); 
 
     }
 
@@ -1409,10 +1565,11 @@ protected function render(): void {
 
         
             <div class="pac_price_str">
-                <span> <sup class="currency_sign">$</sup> <?php echo esc_html($settings['package_price']); ?></span>
                 <?php if (!empty($settings['str_price'])) : ?>
-                    <span class="strikethrough"><del><?php echo esc_html($settings['str_price']); ?></del></span>
+                    <span class="strikethrough"><del><?php echo esc_html($settings['str_price']); ?></del></span>                    
                 <?php endif; ?>
+                <span class="pack_price"> <sup class="currency_sign">$</sup> <?php echo esc_html($settings['package_price']); ?></span>
+                
                 <sub class="type_txt" ><?php echo esc_html($settings['package_type']); ?></sub>
             </div>
 
@@ -1475,8 +1632,11 @@ protected function render(): void {
           </div>
         
           <div class="pac_price_str">
-              <sup class="currency_sign">$</sup>
-              <span>{{{ settings.package_price }}}</span>
+              <# if (!empty settings.str_price) { 
+                <span class="strikethrough"><del><?php echo esc_html($settings['str_price']); ?></del></span> 
+              <# }  #>
+            <span> <sup class="currency_sign">$</sup>  
+              {{{ settings.package_price }}}</span>
               <sub class="type_txt">{{{ settings.package_type }}}</sub>
           </div>
         

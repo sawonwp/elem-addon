@@ -37,7 +37,7 @@
     $widgets_register->register(new \elem_read_more());
     $widgets_register->register(new \elem_in_scroll());
     $widgets_register->register(new \widget5());
-    $widgets_register->register(new \pricing());
+    $widgets_register->register(new \Pricing());
     $widgets_register->register(new \elem_custom_heading());
     $widgets_register->register(new \elem_cascade_img());
    

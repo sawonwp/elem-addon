@@ -1,0 +1,76 @@
+=== Modern Pricing Table for Elementor ===
+Contributors: sawonwp
+Tags: elementor, elementor addons, pricing table widget, checkout, table layout, table, 
+Requires at least: 5.9
+Tested up to: 6.8
+Requires PHP: 7.0
+Stable tag: 1.0.1
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
+A simple but modern pricing tables with advanced options to boost conversions with professional designs that perfectly match your brand.
+
+== Description ==
+
+Modern Pricing Table for Elementor is a free and simple plugin that boost conversions with professional designs that perfectly match your brand.
+
+### Top Features
+
+- 20+ Layout - Engage visitors with smooth hover animations, entrance effects, and interactive elements
+- Complete Visual Customization - Control every design aspect including typography, colors, spacing, backgrounds, borders, shadows, and gradients
+- Responsive & Mobile-First Design - Ensure perfect display across all devices with responsive breakpoint controls
+- Smart Highlighting System - Make featured plans stand out with custom badges, ribbons, and emphasis styling
+- Flexible Pricing Display - Support for multiple currencies, billing periods, and pricing formats
+- Feature List Management - Add unlimited features with custom styling and icon support, allow to add strikethrough
+- SEO-Friendly Structure - Clean, semantic HTML markup for better search engine visibility
+
+### Why Choose Modern Pricing Table for Elementor?
+
+Professional Grade Design: Unlike basic pricing table plugins, Modern Pricing Table for Elementor focuses on contemporary design principles that align with modern web standards and user expectations.
+
+### Perfect For
+
+- SaaS and subscription businesses
+- Digital agencies and freelancers
+- Online course creators
+- Membership sites
+- Software companies
+- Service-based businesses
+- E-commerce stores with tiered offerings
+
+### Getting Started
+
+- Edit any page with Elementor
+- Search for "Modern Pricing Table" in the widget panel
+- Drag the widget to your desired location
+- Customize colors, typography, and content to match your brand
+- Preview and publish your page
+
+## ABOUT US ##
+
+We provide professional solutions for WordPress, with the following core products:
+
+* **Elementor Stripe Payment**
+Seamlessly integrate customized Stripe-powered payment forms into your Elementor site. Sell products, services, accept donations, and more through intuitive checkout experiences. [Elementor Stripe Payment](https://wordpress.org/plugins/pay-addons-for-elementor/) 
+
+== Frequently Asked Questions ==
+= Does this plugin work with any WordPress theme? =
+Yes! Modern Pricing Table for Elementor works with any WordPress theme that supports Elementor. The plugin generates its own styling, so theme compatibility is not an issue.
+
+= Are the pricing tables mobile responsive? =
+Yes, all pricing table designs are fully responsive and optimized for mobile devices. You can also customize the mobile appearance separately if needed.
+
+= Is there a limit to the number of pricing plans? =
+No, you can add unlimited pricing plans to each table. The plugin automatically handles the layout and spacing.
+
+== Screenshots ==
+1. Pricing Table
+2. Pricing Table Editor
+
+== Changelog ==
+
+= 1.0.0 =
+First Release
+
+== Upgrade Notice ==
+None.

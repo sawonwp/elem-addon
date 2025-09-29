@@ -1,3 +1,12 @@
+.strikethrough{
+    opacity: 0.20;
+}
+ul.list_wrapper {
+    margin: 0px;
+}
+p{
+    margin-bottom: 0px!important;
+}
 .badge_wrapper{
     width: 100%; 
 }
@@ -65,16 +74,6 @@ ul.list_wrapper svg {
     clip-path: polygon(181% 182%, 0 0, 100% 0);
 }
 
-.element-style-circle.table-style1 .package_name::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 300px;
-    top: 14%;
-    left: 0%;
-    clip-path: circle(60% at 50% 0);
-    z-index: -1;
-}
 
 
 .element-style-ltriangle.table-style1 .package_name::after {
@@ -108,13 +107,13 @@ ul.list_wrapper svg {
     grid-row: 1/span 1;
 }
 
-.table-style3 .pac_price_str { 
+/* .table-style3 .pac_price_str { 
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;   
-}  
+}   */
 
 
 .table-style3.price-position-top .pac_price_str {    
@@ -217,27 +216,49 @@ ul.list_wrapper svg {
 }
 
 
-.table-style5 .pricing_box_wrapper {
-    text-align: center;
+.table-style5.txt_before_title .btm_txt {
+    grid-row: 1 / span 1;
 }
 
-.table-style5 .pack_icon {  
-    margin: 0 auto;
-}
-
-.table-style6 .btm_txt {
+.table-style5.txt_after_title .btm_txt {
     grid-row: 2 / span 1;
 }
 
-/*  */
-.table-style7 .package_name {
+.table-style5.txt_after_icon .btm_txt {
+    grid-row: 3 / span 1;
+}
+
+.table-style5.txt_after_pricing .btm_txt {
+    grid-row: 4 / span 1;
+}
+
+.table-style5.txt_after_list .btm_txt {
+    grid-row: 5 / span 1;
+}
+
+.table-style5.txt_after_button .btm_txt {
+    grid-row: 6 / span 1;
+}
+
+
+
+/* style 1 overlapped */
+.table-style1.element-style-overlaped .package_name  {
     position: relative;
-    top: -50px;
+    top: -50%;
     left: 50%;
     transform: translateX(-50%);   
     width: 85%;
 }
 
+
+.elementor-widget-Pricing.Table.btn_top_yes .pack_btn{
+        grid-row: 4 / span 1;
+}
+/* move price on bottom */
+ .price_btm_yes .pac_price_str {
+    grid-row: 4 / span 4;
+} 
 
 
 
